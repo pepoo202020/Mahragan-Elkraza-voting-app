@@ -11,20 +11,13 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+
 import { Textarea } from "@/components/ui/textarea";
 import { LanguageType, TranslationKeys } from "@/ui/contexts/LanguageContext";
 import { Camera, Eye, EyeOff, Upload } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { SharedSelectItem } from "../../shared/SharedSelectItem";
-import { Role } from "@prisma/client";
 
 interface IAddNewUserModal {
   open: boolean;
@@ -247,8 +240,8 @@ export const AddNewUserModal = ({
                 }))
               }
               options={[
-                { value: `${Role.ADMIN}`, label: { en: "Admin", ar: "مسؤول" } },
-                { value: `${Role.USER}`, label: { en: "User", ar: "مستخدم" } },
+                { value: `${"ADMIN"}`, label: { en: "Admin", ar: "مسؤول" } },
+                { value: `${"USER"}`, label: { en: "User", ar: "مستخدم" } },
               ]}
               value={formData.role}
             />

@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { ArtVoteCard } from "./ArtVoteCard";
 import addVote from "@/actions/addVote";
 import { useSession } from "next-auth/react";
-import { Artwork } from "@prisma/client";
+import { TArtwork } from "@/ui/types/types";
 import getVotingEvent from "@/actions/getVotingEvent";
 import { Loading } from "../shared/Loading";
 import checkUserVotes from "@/actions/checkUserVotes";
@@ -24,8 +24,8 @@ export default function VoteClient() {
     individual: "",
     group: "",
   });
-  const [individualArts, setIndividualArts] = useState<Artwork[]>([]);
-  const [groupArts, setGroupArts] = useState<Artwork[]>([]);
+  const [individualArts, setIndividualArts] = useState<TArtwork[]>([]);
+  const [groupArts, setGroupArts] = useState<TArtwork[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [checkingVotes, setCheckingVotes] = useState<boolean>(true);
   const [submittingVotes, setSubmittingVotes] = useState<boolean>(false);
@@ -49,9 +49,9 @@ export default function VoteClient() {
 
       // Set artwork data
       setIndividualArts(
-        artworks.filter((a: Artwork) => a.type === "INDIVIDUAL")
+        artworks.filter((a: TArtwork) => a.type === "INDIVIDUAL")
       );
-      setGroupArts(artworks.filter((a: Artwork) => a.type === "GROUP"));
+      setGroupArts(artworks.filter((a: TArtwork) => a.type === "GROUP"));
 
       // Check if user already voted
       const email = session.data?.user?.email;

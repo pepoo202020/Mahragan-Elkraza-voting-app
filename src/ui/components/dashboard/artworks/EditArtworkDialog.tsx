@@ -18,13 +18,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  LanguageType,
-  TranslationKeys,
-  useLanguage,
-} from "@/ui/contexts/LanguageContext";
+import { LanguageType, TranslationKeys } from "@/ui/contexts/LanguageContext";
 import { Artwork } from "@prisma/client";
-import { Play, Trash2, Upload, X } from "lucide-react";
+import { Trash2, Upload, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 

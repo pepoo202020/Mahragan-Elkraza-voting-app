@@ -9,7 +9,7 @@ import { AddArtworkModal } from "@/ui/components/dashboard/artworks/AddArtworkMo
 import { EditArtworkDialog } from "@/ui/components/dashboard/artworks/EditArtworkDialog";
 import { ViewArtworkDetailsDialog } from "@/ui/components/dashboard/artworks/ViewArtworkDetailsDialog";
 import { useLanguage } from "@/ui/contexts/LanguageContext";
-import { ArtworkType } from "@prisma/client";
+import { TArtworkType } from "@/ui/types/types";
 import { Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -20,7 +20,7 @@ import SharedAlertDialog from "@/ui/components/shared/SharedAlertDialog";
 
 export default function ArtworksPage() {
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [categoryFilter, setCategoryFilter] = useState<ArtworkType | "all">(
+  const [categoryFilter, setCategoryFilter] = useState<TArtworkType | "all">(
     "all"
   );
   const [yearFilter, setYearFilter] = useState<string>("all");

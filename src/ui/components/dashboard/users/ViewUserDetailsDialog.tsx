@@ -9,7 +9,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { LanguageType, TranslationKeys } from "@/ui/contexts/LanguageContext";
-import { Calendar, Mail, MessageSquare, ThumbsUp, User } from "lucide-react";
+import { Calendar, Mail, MessageSquare, ThumbsUp } from "lucide-react";
 import { format } from "date-fns";
 import { IUsersWithVotesAndComments } from "@/ui/types/types";
 import { Avatar_C } from "../../shared/Avatar_C";

@@ -1,7 +1,7 @@
 // components/ArtworkCard.tsx
 import Image from "next/image";
 import clsx from "clsx";
-import { Artwork } from "@prisma/client";
+import { TArtwork } from "@/ui/types/types";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 
@@ -11,7 +11,7 @@ export const ArtVoteCard = ({
   onClick,
   className,
 }: {
-  art: Artwork;
+  art: TArtwork;
   selected: boolean;
   onClick: () => void;
   className?: string;
@@ -37,7 +37,9 @@ export const ArtVoteCard = ({
           alt={art.title}
           width={300}
           height={200}
-          className={`w-full h-full object-cover rounded-md transition-opacity duration-300 ${imageLoading ? 'opacity-0' : 'opacity-100'}`}
+          className={`w-full h-full object-cover rounded-md transition-opacity duration-300 ${
+            imageLoading ? "opacity-0" : "opacity-100"
+          }`}
           onLoadingComplete={() => setImageLoading(false)}
         />
       </div>

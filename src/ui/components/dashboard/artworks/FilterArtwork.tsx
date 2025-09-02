@@ -1,15 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { LanguageType, TranslationKeys } from "@/ui/contexts/LanguageContext";
 import { TCategoryFilter } from "@/ui/types/types";
-import { ArtworkType } from "@prisma/client";
 import { Search } from "lucide-react";
 import { SharedSelectItem } from "../../shared/SharedSelectItem";
 
@@ -60,11 +52,11 @@ export default function FilterArtwork({
             options={[
               { value: "all", label: { en: "All", ar: "جميع الفئات" } },
               {
-                value: `${ArtworkType.INDIVIDUAL}`,
+                value: `${"INDIVIDUAL"}`,
                 label: { en: "Individual", ar: " فرد" },
               },
               {
-                value: `${ArtworkType.GROUP}`,
+                value: `${"GROUP"}`,
                 label: { en: "Group", ar: " مجموعة" },
               },
             ]}

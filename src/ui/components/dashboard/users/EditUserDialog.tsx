@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { LanguageType, TranslationKeys } from "@/ui/contexts/LanguageContext";
-import { User } from "@prisma/client";
+import { TUser } from "@/ui/types/types";
 import { Camera, Upload } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -21,7 +21,7 @@ import { toast } from "sonner";
 interface IEditUserDialog {
   open: boolean;
   onClose: () => void;
-  user: User | null;
+  user: TUser | null;
   onUserUpdated: () => void;
   t: (key: TranslationKeys) => string;
   language: LanguageType;

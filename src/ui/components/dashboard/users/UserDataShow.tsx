@@ -1,10 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { LanguageType, TranslationKeys } from "@/ui/contexts/LanguageContext";
-import {
-  IArtworksWithVotes,
-  ITableHeadRow,
-  IUsersWithVotesAndComments,
-} from "@/ui/types/types";
+import { ITableHeadRow, IUsersWithVotesAndComments } from "@/ui/types/types";
 import { ImageIcon, Loader2 } from "lucide-react";
 import { Avatar_C } from "../../shared/Avatar_C";
 import { Badge } from "@/components/ui/badge";

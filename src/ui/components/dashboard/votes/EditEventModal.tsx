@@ -4,7 +4,7 @@
 import { EditEventInput, editEventSchema } from "@/schemas/edit-event";
 import { LanguageType, TranslationKeys } from "@/ui/contexts/LanguageContext";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Artwork, VotingEvent } from "@prisma/client";
+import { TArtwork, TVotingEvent } from "@/ui/types/types";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -34,8 +34,8 @@ function toDatetimeLocalString(date: Date) {
 interface IEditEventModalProps {
   isOpen: boolean;
   onClose: () => void;
-  event: VotingEvent & { artworks: Artwork[] };
-  onEventUpdate: (id: string, updateEvent: Partial<VotingEvent>) => void;
+  event: TVotingEvent & { artworks: TArtwork[] };
+  onEventUpdate: (id: string, updateEvent: Partial<TVotingEvent>) => void;
   t: (key: TranslationKeys) => string;
   language: LanguageType;
 }

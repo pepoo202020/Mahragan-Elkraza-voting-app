@@ -1,4 +1,3 @@
-// src/app/(dashboard)/dashboard/votes/VoteEventsSlider.tsx
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { Edit, Trash2 } from "lucide-react";

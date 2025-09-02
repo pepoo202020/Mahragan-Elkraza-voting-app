@@ -8,7 +8,7 @@ import { LuVote } from "react-icons/lu";
 import VoteStats from "@/ui/components/dashboard/votes/VoteStats";
 import VoteEventsSlider from "../../../../ui/components/dashboard/overview/VoteEventsSlider";
 import EditEventModal from "@/ui/components/dashboard/votes/EditEventModal";
-import type { VotingEvent, Artwork } from "@prisma/client";
+import type { TArtwork, TVotingEvent } from "@/ui/types/types";
 import VoteDetailsTable from "@/ui/components/dashboard/votes/VoteDetailsTable";
 import type { UiVoteEvent, UiVoteRow, VoteCategory } from "@/ui/types/types";
 import { toast } from "sonner";
@@ -48,7 +48,7 @@ export default function VotesPage() {
   const [allEvents, setAllEvents] = useState<UiVoteEvent[]>([]);
   const [editingEvent, setEditingEvent] = useState<UiVoteEvent | null>(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
-  const [activeEventData, setActiveEventData] = useState<VotingEvent | null>(
+  const [activeEventData, setActiveEventData] = useState<TVotingEvent | null>(
     null
   );
   const [votes, setVotes] = useState<UiVoteRow[]>([]);
@@ -238,7 +238,7 @@ export default function VotesPage() {
 
   const handleEventUpdate = async (
     id: string,
-    updatedEvent: Partial<VotingEvent>
+    updatedEvent: Partial<TVotingEvent>
   ) => {
     try {
       setLoading(true);
@@ -246,7 +246,7 @@ export default function VotesPage() {
         eventId: id,
         title: updatedEvent.title ?? activeEventData?.title ?? "",
         description:
-          (updatedEvent as Partial<VotingEvent>).description ??
+          (updatedEvent as Partial<TVotingEvent>).description ??
           activeEventData?.description ??
           "",
         votingStartTime: (
@@ -334,7 +334,7 @@ export default function VotesPage() {
     [votes, activeEventId]
   );
 
-  const handleEventCreated = async (event: VotingEvent) => {
+  const handleEventCreated = async (event: TVotingEvent) => {
     setLoading(true);
     try {
       // Update total events count
@@ -465,7 +465,7 @@ export default function VotesPage() {
             setIsEditModalOpen(false);
             setEditingEvent(null);
           }}
-          event={activeEventData as VotingEvent & { artworks: Artwork[] }}
+          event={activeEventData as TVotingEvent & { artworks: TArtwork[] }}
           onEventUpdate={handleEventUpdate}
           t={t}
           language={language}

@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { LanguageType, TranslationKeys } from "@/ui/contexts/LanguageContext";
 import { Search } from "lucide-react";
 import { SharedSelectItem } from "../../shared/SharedSelectItem";
-import { Role } from "@prisma/client";
+import { Role } from "@/ui/types/types";
 
 interface IFilterUserProps {
   t: (key: TranslationKeys) => string;
@@ -42,8 +42,8 @@ export default function FilterUser({
             onValueChange={(value) => setRoleFilter(value as Role | "all")}
             options={[
               { value: "all", label: { en: "All Roles", ar: "جميع الأدوار" } },
-              { value: `${Role.ADMIN}`, label: { en: "Admin", ar: "مسؤول" } },
-              { value: `${Role.USER}`, label: { en: "User", ar: "مستخدم" } },
+              { value: `${"ADMIN"}`, label: { en: "Admin", ar: "مسؤول" } },
+              { value: `${"USER"}`, label: { en: "User", ar: "مستخدم" } },
             ]}
             value={roleFilter}
           />
