@@ -1,12 +1,13 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { PrismaAdapter } from "@auth/prisma-adapter";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import db from "@/lib/prisma";
 import bcrypt from "bcryptjs";
 import { NextAuthOptions } from "next-auth";
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(db as any),
+  // Using the NextAuth v4-compatible Prisma adapter; cast to ease client type differences
+  adapter: PrismaAdapter(db as unknown as any) as any,
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -37,7 +38,7 @@ export const authOptions: NextAuthOptions = {
         }
 
         return {
-          id: user.id.toString(), // Convert to string for consistency with IUsersWithVotesAndComments
+          id: user.id.toString(),
           email: user.email,
           name: user.name,
           role: user.role,
@@ -63,9 +64,9 @@ export const authOptions: NextAuthOptions = {
     },
     async session({ session, token }) {
       if (session.user) {
-        (session.user as any).id = token.id as string;
-        session.user.role = token.role as string;
-        session.user.image = token.picture as string;
+        session.user.id = token.id;
+        session.user.role = token.role;
+        session.user.image = token.picture;
       }
       return session;
     },
@@ -73,4 +74,4 @@ export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
 };
 
-export const { handlers, auth, signIn, signOut } = NextAuth(authOptions);
+export const { GET, POST } = NextAuth(authOptions);
