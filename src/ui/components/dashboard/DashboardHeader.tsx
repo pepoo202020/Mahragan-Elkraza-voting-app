@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import { useLanguage } from "@/ui/contexts/LanguageContext";
-import { BarChart3, Globe, LogOut, Moon, Search, Sun } from "lucide-react";
+import { BarChart3, Globe, Moon, Search, Sun } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";

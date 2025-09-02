@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { LanguageType, TranslationKeys } from "@/ui/contexts/LanguageContext";
-import { Artwork } from "@prisma/client";
+import { TArtwork } from "@/ui/types/types";
 import { Trash2, Upload, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -27,7 +27,7 @@ import { toast } from "sonner";
 interface EditArtworkDialogProps {
   open: boolean;
   onClose: () => void;
-  artwork: Artwork | null;
+  artwork: TArtwork | null;
   onArtworkUpdated: () => void;
   t: (key: TranslationKeys) => string;
   language: LanguageType;

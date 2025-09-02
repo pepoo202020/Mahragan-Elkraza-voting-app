@@ -1,12 +1,12 @@
 "use client";
 import { useLanguage } from "@/ui/contexts/LanguageContext";
-import { Artwork, User } from "@prisma/client";
+import { TArtwork, TUser } from "@/ui/types/types";
 import { DashboardStats } from "./DashboardStats";
 import { TopArtworks } from "./TopArtworks";
 import { TopVotedArtworks } from "./TopVotedArtworks";
 
-interface ArtworkWithLovedBy extends Artwork {
-  lovedBy: User[];
+interface ArtworkWithLovedBy extends TArtwork {
+  lovedBy: TUser[];
 }
 
 interface IDashboardClientProps {
@@ -16,7 +16,7 @@ interface IDashboardClientProps {
     totalVotes: number;
     totalEvents: number;
   };
-  artworks: Artwork[];
+  artworks: TArtwork[];
   years: string[];
   topArtworks: ArtworkWithLovedBy[];
 }

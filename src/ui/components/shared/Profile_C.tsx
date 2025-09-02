@@ -6,7 +6,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { LanguageType, TranslationKeys } from "@/ui/contexts/LanguageContext";
-import { Role } from "@prisma/client";
 import { User } from "lucide-react";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import Link from "next/link";
@@ -51,7 +50,7 @@ export const Profile_C = ({
         <DropdownMenuItem onClick={() => setIsProfileModalOpen(true)}>
           {t("profile")}
         </DropdownMenuItem>
-        {user.role === Role.ADMIN && (
+        {user.role === "ADMIN" && (
           <DropdownMenuItem onClick={() => router.push("/dashboard")}>
             {t("dashboard")}
           </DropdownMenuItem>

@@ -24,7 +24,7 @@ import { useState } from "react";
 import createVotingEvent from "@/actions/createVotingEvent";
 import { TranslationKeys, useLanguage } from "@/ui/contexts/LanguageContext";
 import ArtworkSelection from "./ArtworkSelection";
-import { VotingEvent } from "@prisma/client";
+import { TVotingEvent } from "@/ui/types/types";
 
 function toDatetimeLocalString(date: Date) {
   // Returns YYYY-MM-DDTHH:mm
@@ -32,7 +32,7 @@ function toDatetimeLocalString(date: Date) {
 }
 
 interface AddNewEventVoteDialogProps {
-  onEventCreated?: (event: VotingEvent) => void;
+  onEventCreated?: (event: TVotingEvent) => void;
   t: (key: TranslationKeys) => string;
 }
 

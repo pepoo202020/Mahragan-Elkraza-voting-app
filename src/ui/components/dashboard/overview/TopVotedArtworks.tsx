@@ -15,12 +15,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { LanguageType, TranslationKeys } from "@/ui/contexts/LanguageContext";
-import { Artwork, User } from "@prisma/client";
+import { TArtwork, TUser } from "@/ui/types/types";
 import { Eye } from "lucide-react";
 import { useEffect, useState } from "react";
 
-interface ArtworkWithLovedBy extends Artwork {
-  lovedBy: User[];
+interface ArtworkWithLovedBy extends TArtwork {
+  lovedBy: TUser[];
 }
 
 interface ITopVotedArtworksProps {

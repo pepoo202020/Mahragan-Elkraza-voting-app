@@ -1,7 +1,6 @@
 "use client";
 import getUser from "@/actions/getUser";
 import updateUser from "@/actions/updateUser";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -9,11 +8,9 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { LanguageType, TranslationKeys } from "@/ui/contexts/LanguageContext";
-import { User } from "@prisma/client";
+import { TUser } from "@/ui/types/types";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -25,8 +22,6 @@ import {
 } from "@/schemas/edit-profile";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form } from "@/components/ui/form";
-import { SharedFormField } from "../shared/SharedFormField";
 import { ProfileUdateForm } from "./ProfileUdateForm";
 
 interface ProfileModalProps {
@@ -44,7 +39,7 @@ export const ProfileModal = ({
   t,
 }: ProfileModalProps) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
-  const [userData, setUserData] = useState<User | null>(null);
+  const [userData, setUserData] = useState<TUser | null>(null);
   const [editData, setEditData] = useState(userData);
   const [loading, setLoading] = useState<boolean>(false);
   const form = useForm<EditProfileSchemaType>({

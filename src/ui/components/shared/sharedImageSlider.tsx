@@ -2,14 +2,14 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Artwork } from "@prisma/client";
+import { TArtwork } from "@/ui/types/types";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { useState } from "react";
 
 interface ISharedImageSliderProps {
   aspectRatio: "[4/3]" | "square";
   images: string[];
-  artwork: Artwork;
+  artwork: TArtwork;
   withVideo?: boolean;
   setVideoDialogOpen?: (value: boolean) => void;
   withBadge?: boolean;
