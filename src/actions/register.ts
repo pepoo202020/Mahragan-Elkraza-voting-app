@@ -2,7 +2,7 @@
 
 import db from "@/lib/prisma";
 import { RegisterSchemaType } from "@/schemas/register";
-import { Role } from "@prisma/client";
+import { Role } from "../../lib/generated/prisma";
 import bcrypt from "bcryptjs";
 
 export async function registerUser(data: RegisterSchemaType) {

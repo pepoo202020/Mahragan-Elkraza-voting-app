@@ -1,7 +1,7 @@
 "use server";
 
 import db from "@/lib/prisma";
-import { ArtworkType } from "@prisma/client";
+import { ArtworkType } from "../../lib/generated/prisma";
 
 export default async function addVote(
   artworkId: string,

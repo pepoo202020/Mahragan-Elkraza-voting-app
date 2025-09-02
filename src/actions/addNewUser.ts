@@ -1,7 +1,7 @@
 "use server";
 
 import db from "@/lib/prisma";
-import { Role } from "@prisma/client";
+import { Role } from "../../lib/generated/prisma";
 import bcrypt from "bcryptjs";
 
 export async function addNewUSer(data: {

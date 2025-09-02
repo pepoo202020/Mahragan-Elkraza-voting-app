@@ -1,6 +1,6 @@
 "use server";
 import db from "@/lib/prisma";
-import { Role } from "@prisma/client";
+import { Role } from "../../lib/generated/prisma";
 
 export default async function promoteUserToAdmin(userId: string) {
   try {
@@ -8,7 +8,7 @@ export default async function promoteUserToAdmin(userId: string) {
       where: { id: userId },
       data: { role: Role.ADMIN },
     });
-    
+
     return { success: true, user: updatedUser };
   } catch (error) {
     console.error("promoteUserToAdmin error:", error);
