@@ -8,15 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import { Form } from "@/components/ui/form";
 import {
   forgetPasswordSchema,
   ForgetPasswordShemaType,
@@ -32,7 +24,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 export default function ForgetPasswordPage() {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useRouter();
   const form = useForm<ForgetPasswordShemaType>({
@@ -49,7 +41,7 @@ export default function ForgetPasswordPage() {
     setIsLoading(false);
 
     if (result?.error) {
-      toast.error(language === "en" ? "Error" : "خطأ", {
+      toast.error(t("error"), {
         description:
           language === "en"
             ? result.error
@@ -58,15 +50,9 @@ export default function ForgetPasswordPage() {
             : "حدث خطأ أثناء إرسال البريد الإلكتروني",
       });
     } else {
-      toast.success(
-        language === "en" ? "Email sent successfully" : "تم ارسال البريد بنجاح",
-        {
-          description:
-            language === "en"
-              ? "Check your email for the reset code."
-              : "تحقق من بريدك الإلكتروني للحصول على رمز إعادة التعيين.",
-        }
-      );
+      toast.success(t("forgetPasswordSuccessTitle"), {
+        description: t("forgetPasswordSuccessDescription"),
+      });
       navigate.push(
         "/bin-confirmation?email=" + encodeURIComponent(data.email)
       );
@@ -78,13 +64,9 @@ export default function ForgetPasswordPage() {
       <Card className="w-full max-w-md animate-fade-in">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold">
-            {language === "en" ? "Forget Password" : "نسيت كلمة المرور"}
+            {t("forgetPasswordTitle")}
           </CardTitle>
-          <CardDescription>
-            {language === "en"
-              ? "Enter your email and we'll send you a reset link"
-              : "أدخل بريدك الإلكتروني وسنرسل لك رابط إعادة التعيين"}
-          </CardDescription>
+          <CardDescription>{t("forgetPasswordDescription")}</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -95,14 +77,10 @@ export default function ForgetPasswordPage() {
             >
               <SharedFormField
                 control={form.control}
-                label={language === "en" ? "Email" : "البريد الالكتروني"}
+                label={t("email")}
                 language={language}
                 name="email"
-                placeholder={
-                  language === "en"
-                    ? "Enter your email"
-                    : "أدخل البريد الالكتروني"
-                }
+                placeholder={t("enterEmailAddress")}
                 type="email"
               />
               <Button
@@ -110,13 +88,7 @@ export default function ForgetPasswordPage() {
                 className="w-full bg-blue-600 text-white hover:bg-blue-700"
                 disabled={isLoading}
               >
-                {isLoading
-                  ? language === "en"
-                    ? "Sending..."
-                    : "يتم ارسال..."
-                  : language === "en"
-                  ? "Send"
-                  : "ارسال"}
+                {isLoading ? t("sending") : t("send")}
               </Button>
             </form>
           </Form>
@@ -127,7 +99,7 @@ export default function ForgetPasswordPage() {
               className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
             >
               <ArrowLeft className="h-4 w-4" />
-              {language === "en" ? "Back to Login" : "العودة إلى تسجيل الدخول"}
+              {t("backToLogin")}
             </Link>
           </div>
         </CardContent>

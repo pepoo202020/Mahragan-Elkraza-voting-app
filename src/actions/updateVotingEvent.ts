@@ -1,4 +1,3 @@
-// src/actions/updateVotingEvent.ts
 "use server";
 import db from "@/lib/prisma";
 import { EditEventInput } from "@/schemas/edit-event";

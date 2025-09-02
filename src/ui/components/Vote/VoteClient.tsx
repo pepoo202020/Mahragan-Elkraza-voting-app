@@ -7,7 +7,7 @@ import { toast } from "sonner";
 import { ArtVoteCard } from "./ArtVoteCard";
 import addVote from "@/actions/addVote";
 import { useSession } from "next-auth/react";
-import { Artwork, ArtworkType } from "@prisma/client";
+import { Artwork } from "@prisma/client";
 import getVotingEvent from "@/actions/getVotingEvent";
 import { Loading } from "../shared/Loading";
 import checkUserVotes from "@/actions/checkUserVotes";

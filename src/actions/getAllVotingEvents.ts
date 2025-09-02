@@ -1,5 +1,5 @@
 "use server";
-import { UiVoteEvent } from "@/app/types/types";
+import { UiVoteEvent } from "@/ui/types/types";
 import db from "@/lib/prisma";
 
 export default async function getAllVotingEvents() {
@@ -15,6 +15,8 @@ export default async function getAllVotingEvents() {
     });
 
     const eventsInterface: UiVoteEvent[] = events.map((event) => ({
+      startTime: event.startTime,
+      endTime: event.endTime,
       id: event.id,
       title: event.title,
       description: event.description ?? "",

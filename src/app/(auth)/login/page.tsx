@@ -20,7 +20,7 @@ import { SharedFormField } from "@/ui/components/shared/SharedFormField";
 import { signIn } from "next-auth/react";
 
 export default function LoginPage() {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const navigate = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const form = useForm<LoginSchemaType>({
@@ -41,23 +41,13 @@ export default function LoginPage() {
     setLoading(false);
 
     if (res?.error) {
-      toast.error(
-        language === "en" ? "Invalid credentials" : "بيانات الدخول غير صحيحة",
-        {
-          description:
-            language === "en"
-              ? "Invalid credentials"
-              : "بيانات الدخول غير صحيحة",
-        }
-      );
+      toast.error(t("invalidCredentialsTitle"), {
+        description: t("invalidCredentialsDescription"),
+      });
     } else {
-      toast.success(
-        language === "en" ? "Login successful!" : "تم تسجيل الدخول بنجاح",
-        {
-          description:
-            language === "en" ? "Login successful!" : "تم تسجيل الدخول بنجاح",
-        }
-      );
+      toast.success(t("loginSuccessTitle"), {
+        description: t("loginSuccessDescription"),
+      });
       navigate.push("/gallery");
     }
   };
@@ -66,13 +56,9 @@ export default function LoginPage() {
       <Card className="w-full max-w-md animate-fade-in">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold">
-            {language === "en" ? "Welcome Back" : "مرحباً بك مرة أخرى"}
+            {t("loginTitle")}
           </CardTitle>
-          <CardDescription>
-            {language === "en"
-              ? "Sign in to your account to continue"
-              : "قم بتسجيل الدخول إلى حسابك للمتابعة"}
-          </CardDescription>
+          <CardDescription>{t("loginDescription")}</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -83,23 +69,19 @@ export default function LoginPage() {
             >
               <SharedFormField
                 control={form.control}
-                label={language === "en" ? "Email" : "البريد الالكتروني"}
+                label={t("email")}
                 language={language}
                 name="email"
-                placeholder={
-                  language === "en"
-                    ? "Enter your email"
-                    : "أدخل البريد الالكتروني"
-                }
+                placeholder={t("enterEmailAddress")}
                 type="email"
               />
 
               <SharedFormField
                 control={form.control}
-                label={language === "en" ? "Password" : "كلمة المرور"}
+                label={t("password")}
                 language={language}
                 name="password"
-                placeholder={language === "en" ? "Password" : "كلمة المرور"}
+                placeholder={t("enterPassword")}
                 type="password"
               />
 
@@ -108,13 +90,7 @@ export default function LoginPage() {
                 className="w-full bg-blue-600 text-white hover:bg-blue-700"
                 disabled={loading}
               >
-                {loading
-                  ? language === "en"
-                    ? "Signing in..."
-                    : "جاري تسجيل الدخول..."
-                  : language === "en"
-                  ? "Sign in"
-                  : "تسجيل الدخول"}
+                {loading ? t("signingIn") : t("signIn")}
               </Button>
             </form>
           </Form>
@@ -123,13 +99,13 @@ export default function LoginPage() {
               href="/forgot-password"
               className="text-sm text-primary hover:underline block"
             >
-              {language === "en" ? "Forgot password?" : "هل نسيت كلمة المرور ؟"}
+              {t("forgetPassword")}
             </Link>
 
             <div className="text-sm text-muted-foreground">
-              {language === "en" ? "Don't have an account?" : "ليس لديك حساب؟"}{" "}
+              {t("doNotHaveAccount")}{" "}
               <Link href="/register" className="text-primary hover:underline">
-                {language === "en" ? "Sign up" : "تسجيل"}
+                {t("signUp")}
               </Link>
             </div>
           </div>

@@ -1,4 +1,3 @@
-// src/actions/getVotingEventDetails.ts
 "use server";
 import db from "@/lib/prisma";
 

@@ -14,7 +14,6 @@ import {
   resetPasswordSchema,
   ResetPasswordSchemaType,
 } from "@/schemas/reset-password";
-import { PasswordFormField } from "@/ui/components/shared/PasswordFormField";
 import { SharedFormField } from "@/ui/components/shared/SharedFormField";
 import { useLanguage } from "@/ui/contexts/LanguageContext";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -26,7 +25,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 export default function ResetPassword() {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const form = useForm<ResetPasswordSchemaType>({
     resolver: zodResolver(resetPasswordSchema(language)),
@@ -54,17 +53,9 @@ export default function ResetPassword() {
             : "حدث خطأ أثناء إعادة تعيين كلمة المرور",
       });
     } else {
-      toast.success(
-        language === "en"
-          ? "Password reset successful"
-          : "تم إعادة تعيين كلمة المرور بنجاح",
-        {
-          description:
-            language === "en"
-              ? "You can now log in with your new password."
-              : "يمكنك الآن تسجيل الدخول بكلمة المرور الجديدة.",
-        }
-      );
+      toast.success(t("resetPasswordSuccessTitle"), {
+        description: t("resetPasswordSuccessDescription"),
+      });
       navigate.push("/login");
       form.reset();
     }
@@ -74,13 +65,9 @@ export default function ResetPassword() {
       <Card className="w-full max-w-md animate-fade-in">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold">
-            {language === "en" ? "Reset Password" : "تعيين كلمة مرور جديده"}
+            {t("resetPasswordTitle")}
           </CardTitle>
-          <CardDescription>
-            {language === "en"
-              ? "Enter your new password and must be different from old password"
-              : "ادخل الباسورد الجديد ويجب ان يكون مختلف عن الباسورد القديم"}
-          </CardDescription>
+          <CardDescription>{t("resetPasswordDescription")}</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -91,10 +78,10 @@ export default function ResetPassword() {
             >
               <SharedFormField
                 control={form.control}
-                label={language === "en" ? "Password" : "كلمة المرور"}
+                label={t("password")}
                 language={language}
                 name="password"
-                placeholder={language === "en" ? "Password" : "كلمة المرور"}
+                placeholder={t("enterPassword")}
                 type="password"
               />
 
@@ -103,13 +90,7 @@ export default function ResetPassword() {
                 className="w-full bg-blue-600 text-white hover:bg-blue-700"
                 disabled={isLoading}
               >
-                {isLoading
-                  ? language === "en"
-                    ? "Sending..."
-                    : "يتم ارسال..."
-                  : language === "en"
-                  ? "Send"
-                  : "ارسال"}
+                {isLoading ? t("sending") : t("send")}
               </Button>
             </form>
           </Form>
@@ -120,7 +101,7 @@ export default function ResetPassword() {
               className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
             >
               <ArrowLeft className="h-4 w-4" />
-              {language === "en" ? "Back to Login" : "العودة إلى تسجيل الدخول"}
+              {t("backToLogin")}
             </Link>
           </div>
         </CardContent>

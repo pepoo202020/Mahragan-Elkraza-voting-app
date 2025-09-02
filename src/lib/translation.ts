@@ -226,6 +226,56 @@ export const translations = {
     noGroupArtworksAvailable: "No group artworks available",
     noIndividualArtworksAvailable: "No individual artworks available",
     pleaseSelectAtLeastOneArtwork: "Please select at least one artwork",
+    // bin confirmation
+    binConfirmationFailedTitle: "Invalid Code",
+    binConfirmationSuccessTitle: "Code correct",
+    binConfirmationSuccessDescription:
+      "Code verified! You can now reset your password.",
+    binConfirmationTitle: "BIN Confirmation",
+    binConfirmationDescription:
+      "Enter the code sent to your email to confirm your account.",
+    binLabel: "BIN Number",
+    binPlaceholder: "Enter your Otp BIN Number",
+    sending: "Sending...",
+    send: "Send",
+    backToLogin: "Back To Login",
+    // forger-password
+    error: "Error",
+    forgetPasswordSuccessTitle: "Email sent successfully",
+    forgetPasswordSuccessDescription:
+      "We've sent a password reset link to your email. Please check your inbox.",
+    forgetPasswordTitle: "Forget Password",
+    forgetPasswordDescription:
+      "Enter your email to receive a password reset link.",
+    // login
+    invalidCredentialsTitle: "Invalid credentials",
+    invalidCredentialsDescription:
+      "The email or password you entered is incorrect. Please try again.",
+    loginSuccessTitle: "Login successful!",
+    loginSuccessDescription: "You have successfully logged in.",
+    loginTitle: "Welcome Back",
+    loginDescription: "Sign in to your account to continue",
+    signingIn: "Signing In...",
+    signIn: "Sign In",
+    forgetPassword: "Forget Password",
+    doNotHaveAccount: "Don't have an account?",
+    signUp: "Sign Up",
+    // register
+    registerSuccessTitle: "Registration Successful",
+    registerSuccessDescription: "Account created successfully! Please sign in.",
+    registerTitle: "Create New Account",
+    registerDescription: "Sign up to start voting in the artworks",
+    confirmPasswordLabel: "Confirm Password",
+    confirmPasswordPlaceholder: "enter your password again",
+    registering: "Registering...",
+    alreadyHaveAccount: "Already have an account?",
+    // reset-password
+    resetPasswordSuccessTitle: "Password reset successful",
+    resetPasswordSuccessDescription:
+      "You can now log in with your new password.",
+    resetPasswordTitle: "Reset Password",
+    resetPasswordDescription:
+      "Enter your new password and must be different from old password",
   },
   ar: {
     splashScreenWelcome: "أهلاً بكم في",
@@ -447,5 +497,55 @@ export const translations = {
     noGroupArtworksAvailable: "لا توجد أعمال فنية جماعية متاحة",
     noIndividualArtworksAvailable: "لا توجد أعمال فنية فردية متاحة",
     pleaseSelectAtLeastOneArtwork: "يرجى اختيار على الأقل одну أعمال",
+    // bin confirmation
+    binConfirmationFailedTitle: "رمز غير صالح",
+    binConfirmationSuccessTitle: "الرمز صحيح",
+    binConfirmationSuccessDescription:
+      "تم التحقق من الرمز! يمكنك الآن إعادة تعيين كلمة المرور الخاصة بك.",
+    binConfirmationTitle: "تأكيد رقم التعريف",
+    binConfirmationDescription:
+      "أدخل الرمز المرسل إلى بريدك الإلكتروني لتأكيد حسابك.",
+    binLabel: "رقم التعريف",
+    binPlaceholder: "أدخل رقم التعريف الخاص بك",
+    sending: "جاري الإرسال...",
+    send: "إرسال",
+    backToLogin: "العودة لتسجيل الدخول",
+    // forger-password
+    error: "خطأ",
+    forgetPasswordSuccessTitle: "تم إرسال البريد الإلكتروني بنجاح",
+    forgetPasswordSuccessDescription:
+      "لقد أرسلنا رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني. يرجى التحقق من صندوق الوارد الخاص بك.",
+    forgetPasswordTitle: "نسيت كلمة المرور",
+    forgetPasswordDescription:
+      "أدخل بريدك الإلكتروني لتلقي رابط إعادة تعيين كلمة المرور.",
+    // login
+    invalidCredentialsTitle: "بيانات الاعتماد غير صالحة",
+    invalidCredentialsDescription:
+      "البريد الإلكتروني أو كلمة المرور التي أدخلتها غير صحيحة. حاول مرة اخرى.",
+    loginSuccessTitle: "تم تسجيل الدخول بنجاح!",
+    loginSuccessDescription: "لقد قمت بتسجيل الدخول بنجاح.",
+    loginTitle: "مرحباً بعودتك",
+    loginDescription: "قم بتسجيل الدخول إلى حسابك للمتابعة",
+    signingIn: "جاري تسجيل الدخول...",
+    signIn: "تسجيل الدخول",
+    forgetPassword: "نسيت كلمة المرور",
+    doNotHaveAccount: "ليس لديك حساب؟",
+    signUp: "إنشاء حساب",
+    // register
+    registerSuccessTitle: "تم التسجيل بنجاح",
+    registerSuccessDescription: "تم إنشاء الحساب بنجاح! الرجاء تسجيل الدخول.",
+    registerTitle: "إنشاء حساب جديد",
+    registerDescription: "سجل للبدء في التصويت على الأعمال الفنية",
+    confirmPasswordLabel: "تأكيد كلمة المرور",
+    confirmPasswordPlaceholder: "أدخل كلمة المرور مرة أخرى",
+    registering: "جاري التسجيل...",
+    alreadyHaveAccount: "هل لديك حساب بالفعل؟",
+    // reset-password
+    resetPasswordSuccessTitle: "تم إعادة تعيين كلمة المرور بنجاح",
+    resetPasswordSuccessDescription:
+      "يمكنك الآن تسجيل الدخول باستخدام كلمة المرور الجديدة",
+    resetPasswordTitle: "إعادة تعيين كلمة المرور",
+    resetPasswordDescription:
+      "أدخل كلمة المرور الجديدة ويجب أن تكون مختلفة عن كلمة المرور القديمة",
   },
 };

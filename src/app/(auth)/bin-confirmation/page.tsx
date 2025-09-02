@@ -8,21 +8,7 @@ import {
   CardDescription,
   CardContent,
 } from "@/components/ui/card";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSeparator,
-  InputOTPSlot,
-} from "@/components/ui/input-otp";
+import { Form } from "@/components/ui/form";
 import {
   binConfirmationSchema,
   BinConfirmationSchemaType,
@@ -38,7 +24,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 export default function BinConfirmationPage() {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const navigate = useRouter();
   const [attempts, setAttempts] = useState<number>(0);
@@ -58,7 +44,7 @@ export default function BinConfirmationPage() {
 
     if (result?.error) {
       setAttempts(attempts + 1);
-      toast.error(language === "en" ? "Invalid Code" : "رمز غير صحيح", {
+      toast.error(t("binConfirmationFailedTitle"), {
         description:
           language === "en"
             ? `Invalid or expired code. ${2 - attempts} attempts left.`
@@ -70,11 +56,8 @@ export default function BinConfirmationPage() {
       }
       form.reset();
     } else {
-      toast.success(language === "en" ? "Code correct" : "الرمز صحيح", {
-        description:
-          language === "en"
-            ? "Code verified! You can now reset your password."
-            : "تم التحقق من الرمز! يمكنك الآن إعادة تعيين كلمة المرور.",
+      toast.success(t("binConfirmationSuccessTitle"), {
+        description: t("binConfirmationSuccessDescription"),
       });
       navigate.push("/reset-password?email=" + encodeURIComponent(userEmail));
       setAttempts(0);
@@ -86,13 +69,9 @@ export default function BinConfirmationPage() {
       <Card className="w-full max-w-md animate-fade-in">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold">
-            {language === "en" ? "BIN Confirmation" : "ارسال الرمز التأكيدي"}
+            {t("binConfirmationTitle")}
           </CardTitle>
-          <CardDescription>
-            {language === "en"
-              ? "Enter your email and we'll send you a reset link"
-              : "أدخل بريدك الإلكتروني وسنرسل لك رابط إعادة التعيين"}
-          </CardDescription>
+          <CardDescription>{t("binConfirmationDescription")}</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -103,14 +82,10 @@ export default function BinConfirmationPage() {
             >
               <SharedFormField
                 control={form.control}
-                label={language === "en" ? "BIN Number" : "رقم التأكيد"}
+                label={t("binLabel")}
                 language={language}
                 name="bin"
-                placeholder={
-                  language === "en"
-                    ? "Enter your Otp Number"
-                    : "أدخل رفم التأكيدي"
-                }
+                placeholder={t("binPlaceholder")}
                 type="otp"
               />
 
@@ -119,13 +94,7 @@ export default function BinConfirmationPage() {
                 className="w-full bg-blue-600 text-white hover:bg-blue-700"
                 disabled={isLoading}
               >
-                {isLoading
-                  ? language === "en"
-                    ? "Sending..."
-                    : "يتم ارسال..."
-                  : language === "en"
-                  ? "Send"
-                  : "ارسال"}
+                {isLoading ? t("sending") : t("send")}
               </Button>
             </form>
           </Form>
@@ -136,7 +105,7 @@ export default function BinConfirmationPage() {
               className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
             >
               <ArrowLeft className="h-4 w-4" />
-              {language === "en" ? "Back to Login" : "العودة إلى تسجيل الدخول"}
+              {t("backToLogin")}
             </Link>
           </div>
         </CardContent>

@@ -1,8 +1,6 @@
-// src/actions/createVotingEvent.ts
 "use server";
 import db from "@/lib/prisma";
 import { CreateEventInput } from "@/schemas/create-event";
-import { revalidatePath } from "next/cache";
 
 export default async function createVotingEvent(formData: CreateEventInput) {
   const {
@@ -31,8 +29,6 @@ export default async function createVotingEvent(formData: CreateEventInput) {
       },
     },
   });
-
-  revalidatePath("/dashboard/votes");
 
   return { event };
 }

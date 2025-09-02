@@ -5,9 +5,6 @@ export default function LoadingUsersDashboard() {
         <div className="relative flex h-24 w-24 items-center justify-center">
           <div className="absolute h-20 w-20 animate-spin rounded-full border-4 border-solid border-primary border-t-transparent"></div>
         </div>
-        <p className="mt-4 text-lg font-medium text-muted-foreground">
-          Loading...
-        </p>
       </div>
     </div>
   );

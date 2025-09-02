@@ -1,4 +1,3 @@
-// src/actions/deleteVote.ts
 "use server";
 import db from "@/lib/prisma";
 

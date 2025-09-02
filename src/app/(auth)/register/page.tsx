@@ -8,20 +8,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Form,
-  FormLabel,
-  FormField,
-  FormItem,
-  FormControl,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import { Form } from "@/components/ui/form";
 import { registerSchema, RegisterSchemaType } from "@/schemas/register";
 import { SharedFormField } from "@/ui/components/shared/SharedFormField";
 import { useLanguage } from "@/ui/contexts/LanguageContext";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -29,7 +20,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 export default function RegisterPage() {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const navigate = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -46,7 +37,7 @@ export default function RegisterPage() {
     setIsLoading(true);
     const result = await registerUser(data);
     if (result?.error) {
-      toast.error(language === "en" ? "Error" : "خطأ", {
+      toast.error(t("error"), {
         description:
           language === "en"
             ? result.error
@@ -55,11 +46,8 @@ export default function RegisterPage() {
             : "فشل التسجيل. حاول مرة أخرى.",
       });
     } else {
-      toast.success(language === "en" ? "Success" : "نجاح", {
-        description:
-          language === "en"
-            ? "Account created successfully! Please sign in."
-            : "تم إنشاء الحساب بنجاح! يرجى تسجيل الدخول.",
+      toast.success(t("registerSuccessTitle"), {
+        description: t("registerSuccessDescription"),
       });
       navigate.push("/login");
     }
@@ -70,13 +58,9 @@ export default function RegisterPage() {
       <Card className="w-full max-w-md animate-fade-in">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold">
-            {language === "en" ? "Create New Account" : "إنشاء حساب جديد"}
+            {t("registerTitle")}
           </CardTitle>
-          <CardDescription>
-            {language === "en"
-              ? "Sign up to start voting in the artworks"
-              : "سجل للبدء في التصويت للأعمال الفنية الافضل بالنسبة لك"}
-          </CardDescription>
+          <CardDescription>{t("registerDescription")}</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -87,46 +71,36 @@ export default function RegisterPage() {
             >
               <SharedFormField
                 control={form.control}
-                label={language === "en" ? "Name" : "الاسم"}
+                label={t("name")}
                 language={language}
                 name="name"
-                placeholder={
-                  language === "en" ? "Enter your name" : "أدخل الاسم"
-                }
+                placeholder={t("namePlaceholder")}
               />
 
               <SharedFormField
                 control={form.control}
-                label={language === "en" ? "Email" : "البريد الالكتروني"}
+                label={t("email")}
                 language={language}
                 name="email"
-                placeholder={
-                  language === "en"
-                    ? "Enter your email"
-                    : "أدخل البريد الالكتروني"
-                }
+                placeholder={t("enterEmailAddress")}
                 type="email"
               />
 
               <SharedFormField
                 control={form.control}
-                label={language === "en" ? "Password" : "كلمة المرور"}
+                label={t("password")}
                 language={language}
                 name="password"
-                placeholder={language === "en" ? "Password" : "كلمة المرور"}
+                placeholder={t("enterPassword")}
                 type="password"
               />
 
               <SharedFormField
                 control={form.control}
-                label={
-                  language === "en" ? "Confirm Password" : "تأكيد كلمة المرور"
-                }
+                label={t("confirmPasswordLabel")}
                 language={language}
                 name="confirmPassword"
-                placeholder={
-                  language === "en" ? "Confirm Password" : "تأكيد كلمة المرور"
-                }
+                placeholder={t("confirmPasswordPlaceholder")}
                 type="confirmPassword"
               />
 
@@ -135,23 +109,15 @@ export default function RegisterPage() {
                 className="w-full bg-blue-600 text-white hover:bg-blue-700"
                 disabled={isLoading}
               >
-                {isLoading
-                  ? language === "en"
-                    ? "Loading..."
-                    : "يتم تحميل..."
-                  : language === "en"
-                  ? "Register"
-                  : "تسجيل"}
+                {isLoading ? t("registering") : t("register")}
               </Button>
             </form>
           </Form>
           <div className="mt-6 text-center">
             <div className="text-sm text-muted-foreground">
-              {language === "en"
-                ? "Already have an account?"
-                : "هل لديك حساب بالفعل؟"}{" "}
+              {t("alreadyHaveAccount")}{" "}
               <Link href="/login" className="text-primary hover:underline">
-                {language === "en" ? "login" : "تسجيل الدخول"}
+                {t("login")}
               </Link>
             </div>
           </div>

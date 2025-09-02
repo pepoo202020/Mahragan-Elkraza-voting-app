@@ -4,48 +4,16 @@ import getUsers from "@/actions/getUsers";
 import deleteUser from "@/actions/deleteUser";
 import promoteUserToAdmin from "@/actions/promoteUserToAdmin";
 import getUserById from "@/actions/getUserById";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { Card, CardContent } from "@/components/ui/card";
+
 import { AddNewUserModal } from "@/ui/components/dashboard/users/AddNewUserModal";
 import { EditUserDialog } from "@/ui/components/dashboard/users/EditUserDialog";
 import { ViewUserDetailsDialog } from "@/ui/components/dashboard/users/ViewUserDetailsDialog";
 import { Loading } from "@/ui/components/shared/Loading";
 import { useLanguage } from "@/ui/contexts/LanguageContext";
-import { Comment, Role, User, Vote } from "@prisma/client";
-import {
-  Edit,
-  Eye,
-  MoreHorizontal,
-  Plus,
-  Search,
-  Shield,
-  Trash2,
-  UsersIcon,
-} from "lucide-react";
+import { Role } from "@prisma/client";
+import { Plus, Shield, UsersIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import SharedAlertDialog from "@/ui/components/shared/SharedAlertDialog";
