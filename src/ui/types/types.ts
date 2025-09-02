@@ -29,6 +29,8 @@ export interface UiVoteRow {
   category: VoteCategory;
 }
 
+export type Role = "ADMIN" | "USER" | "CUSTOMER";
+
 export type TCategoryFilter = ArtworkType | "all";
 
 export interface IArtworksWithVotes extends Artwork {

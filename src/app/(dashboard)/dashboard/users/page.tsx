@@ -12,7 +12,7 @@ import { EditUserDialog } from "@/ui/components/dashboard/users/EditUserDialog";
 import { ViewUserDetailsDialog } from "@/ui/components/dashboard/users/ViewUserDetailsDialog";
 import { Loading } from "@/ui/components/shared/Loading";
 import { useLanguage } from "@/ui/contexts/LanguageContext";
-import { Role } from "@prisma/client";
+import { Role } from "@/ui/types/types";
 import { Plus, Shield, UsersIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -88,7 +88,7 @@ export default function UsersPage() {
         // Update UI by updating the user's role
         setUsers((prevUsers) =>
           prevUsers.map((user) =>
-            user.id === userId ? { ...user, role: Role.ADMIN } : user
+            user.id === userId ? { ...user, role: "ADMIN" } : user
           )
         );
       } else {
@@ -158,7 +158,7 @@ export default function UsersPage() {
     { label: t("totalUsers"), value: users.length, icon: UsersIcon },
     {
       label: t("adminUsers"),
-      value: users.filter((u) => u.role === Role.ADMIN).length,
+      value: users.filter((u) => u.role === "ADMIN").length,
       icon: Shield,
     },
   ];
