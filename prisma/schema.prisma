@@ -1,0 +1,112 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  image     String? @default("https://github.com/shadcn.png")
+  bio       String?
+  role      Role      @default(USER)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  comments  Comment[]
+  votes     Vote[]
+  resetToken      String?
+  resetTokenExpiry DateTime?
+  deletedAt DateTime?
+  lovedBy   Artwork[] @relation("ArtworkLikes")
+
+}
+
+model Artwork {
+  id          String    @id @default(cuid())
+  title       String
+  author      String
+  type        ArtworkType
+  members     String[]
+  images      String[]
+  video       String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  comments    Comment[]
+  votes       Vote[]
+  year        String
+  description String
+  loves   Int @default(0)
+  status ArtworkStatus @default(PUBLISHED)
+  // Add these two lines:
+  votingEventId String?
+  votingEvent   VotingEvent? @relation(fields: [votingEventId], references: [id])
+  deletedAt DateTime?
+  lovedBy   User[]    @relation("ArtworkLikes")
+
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  text      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  artworkId String
+  artwork   Artwork  @relation(fields: [artworkId], references: [id])
+  deletedAt DateTime?
+}
+
+model Vote {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  artworkId String
+  artwork   Artwork  @relation(fields: [artworkId], references: [id])
+  votingEventId String
+  votingEvent   VotingEvent @relation(fields: [votingEventId], references: [id])
+  category      ArtworkType
+
+  @@unique([userId, votingEventId, category])
+}
+
+model VotingEvent {
+  id             String   @id @default(cuid())
+  title          String
+  description    String?
+  startTime      DateTime
+  endTime        DateTime
+  year           Int      @unique         // 2024, 2025 … guarantees one-per-year
+  createdAt      DateTime @default(now())
+
+  // relations
+  artworks       Artwork[]   // artworks that belong to this event
+  votes          Vote[]
+}
+
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum ArtworkType {
+  INDIVIDUAL
+  GROUP
+}
+
+enum ArtworkStatus {
+  DRAFT
+  PUBLISHED
+  REJECTED
+}
