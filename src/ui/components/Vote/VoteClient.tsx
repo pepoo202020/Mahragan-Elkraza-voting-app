@@ -77,7 +77,7 @@ export default function VoteClient() {
 
   useEffect(() => {
     fetchEventAndVotes();
-  }, [fetchEventAndVotes]);
+  }, []);
 
   const handleVote = async () => {
     const email = session.data?.user?.email;
