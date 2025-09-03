@@ -10,6 +10,7 @@ import { useRef, useState } from "react";
 import { Session } from "next-auth";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useLanguage } from "@/ui/contexts/LanguageContext";
+import SharedImageSlider from "../shared/sharedImageSlider";
 
 interface IArtWorkCardProps {
   artwork: Artwork;
@@ -74,54 +75,15 @@ export const ArtWorkCard = ({
           </div>
         </div>
         {/* Artwork Image/Video Slider */}
-        <div className="relative aspect-[4/3] overflow-hidden">
-          <Image
-            layout="fill"
-            src={images[currentIndex]}
-            alt={artwork.title}
-            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-          />
-          {images.length > 1 && (
-            <>
-              <Button
-                size="icon"
-                variant="ghost"
-                className="absolute left-2 top-1/2 -translate-y-1/2 z-10"
-                onClick={goPrev}
-                disabled={currentIndex === 0}
-              >
-                <ChevronLeft />
-              </Button>
-              <Button
-                size="icon"
-                variant="ghost"
-                className="absolute right-2 top-1/2 -translate-y-1/2 z-10"
-                onClick={goNext}
-                disabled={currentIndex === images.length - 1}
-              >
-                <ChevronRight />
-              </Button>
-            </>
-          )}
-          {artwork.video && (
-            <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-              <Button
-                size="icon"
-                variant="secondary"
-                className="rounded-full bg-white/90"
-                onClick={handlePlayVideo}
-              >
-                <Play className="h-5 w-5 ml-0.5" />
-              </Button>
-            </div>
-          )}
-          <Badge
-            variant="secondary"
-            className="absolute top-2 right-2 bg-background/90"
-          >
-            {artwork.type}
-          </Badge>
-        </div>
+        <SharedImageSlider
+          artwork={artwork}
+          aspectRatio="[4/3]"
+          images={images}
+          withVideo={artwork.video ? true : false}
+          setVideoDialogOpen={setVideoDialogOpen}
+          withBadge={true}
+        />
+
         <CardHeader className="pb-3">
           <CardTitle className="text-lg leading-tight">
             {artwork.title}
