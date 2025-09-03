@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { LanguageType, TranslationKeys } from "@/ui/contexts/LanguageContext";
-import { TUser } from "@/ui/types/types";
+import { User } from "../../../../lib/generated/prisma";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
@@ -39,7 +39,7 @@ export const ProfileModal = ({
   t,
 }: ProfileModalProps) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
-  const [userData, setUserData] = useState<TUser | null>(null);
+  const [userData, setUserData] = useState<User | null>(null);
   const [editData, setEditData] = useState(userData);
   const [loading, setLoading] = useState<boolean>(false);
   const form = useForm<EditProfileSchemaType>({

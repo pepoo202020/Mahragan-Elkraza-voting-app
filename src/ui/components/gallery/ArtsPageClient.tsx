@@ -7,7 +7,7 @@ import { GalleryFooter } from "./Footer";
 import { ScrollToTopButton } from "./ScrollToTopButton";
 import { useLanguage } from "@/ui/contexts/LanguageContext";
 import { useEffect, useRef, useState } from "react";
-import { TArtwork } from "@/ui/types/types";
+import { Artwork } from "../../../../lib/generated/prisma";
 import { Loading } from "../shared/Loading";
 import { useSession } from "next-auth/react";
 import setLoveArtwork from "@/actions/setLoveArtwork";
@@ -16,7 +16,7 @@ import getVotingEvent from "@/actions/getVotingEvent";
 import getUser from "@/actions/getUser";
 
 interface ArtsPageClientProps {
-  artworks: TArtwork[];
+  artworks: Artwork[];
   categories: { value: string; label: { en: string; ar: string } }[];
   sortOptions: { value: string; label: { en: string; ar: string } }[];
 }
@@ -34,9 +34,9 @@ export default function ArtsPageClient({
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [sortBy, setSortBy] = useState<string>("latest");
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [artworks, setArtworks] = useState<TArtwork[]>(initialArtworks);
+  const [artworks, setArtworks] = useState<Artwork[]>(initialArtworks);
   const [filteredArtworks, setFilteredArtworks] =
-    useState<TArtwork[]>(initialArtworks);
+    useState<Artwork[]>(initialArtworks);
   const [lovedArtworks, setLovedArtworks] = useState<Set<string>>(new Set());
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const { data: session } = useSession();

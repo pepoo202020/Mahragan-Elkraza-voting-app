@@ -1,14 +1,14 @@
 import { TranslationKeys } from "@/ui/contexts/LanguageContext";
 import { Search_C } from "../../shared/Search_C";
 import AddNewEventVoteDialog from "../../Vote/AddNewEventVoteDialog";
-import { TVotingEvent } from "@/ui/types/types";
+import { VotingEvent } from "../../../../../lib/generated/prisma";
 
 interface IVoteHeaderProps {
   t: (key: TranslationKeys) => string;
   searchTerm: string;
   setSearchTerm: (searchTerm: string) => void;
   currentActiveEventName: string;
-  onEventCreated?: (event: TVotingEvent) => void;
+  onEventCreated?: (event: VotingEvent) => void;
 }
 
 export default function VoteHeader({

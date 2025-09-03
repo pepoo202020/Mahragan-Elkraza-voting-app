@@ -1,7 +1,7 @@
 // components/ArtworkCard.tsx
 import Image from "next/image";
 import clsx from "clsx";
-import { TArtwork } from "@/ui/types/types";
+import { Artwork } from "../../../../lib/generated/prisma";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 
@@ -11,7 +11,7 @@ export const ArtVoteCard = ({
   onClick,
   className,
 }: {
-  art: TArtwork;
+  art: Artwork;
   selected: boolean;
   onClick: () => void;
   className?: string;

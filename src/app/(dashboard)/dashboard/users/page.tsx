@@ -12,7 +12,7 @@ import { EditUserDialog } from "@/ui/components/dashboard/users/EditUserDialog";
 import { ViewUserDetailsDialog } from "@/ui/components/dashboard/users/ViewUserDetailsDialog";
 import { Loading } from "@/ui/components/shared/Loading";
 import { useLanguage } from "@/ui/contexts/LanguageContext";
-import { Role } from "@/ui/types/types";
+import { Role } from "../../../../../lib/generated/prisma";
 import { Plus, Shield, UsersIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";

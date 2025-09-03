@@ -3,7 +3,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import getArtworks from "@/actions/getArtworks";
-import { TArtwork } from "@/ui/types/types";
+import { Artwork } from "../../../../lib/generated/prisma";
 import { Badge } from "@/components/ui/badge";
 import { Loading } from "../shared/Loading";
 import { TranslationKeys } from "@/ui/contexts/LanguageContext";
@@ -42,7 +42,7 @@ export default function ArtworkSelection({
 
   if (loading) return <Loading />;
 
-  const renderArtworks = (items: TArtwork[]) => (
+  const renderArtworks = (items: Artwork[]) => (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-h-[400px] overflow-y-auto p-2">
       {items.map((artwork) => (
         <div

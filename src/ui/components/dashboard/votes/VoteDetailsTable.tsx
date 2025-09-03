@@ -1,4 +1,3 @@
-// src/ui/components/dashboard/votes/VoteDetailsTable.tsx
 "use client";
 
 import {

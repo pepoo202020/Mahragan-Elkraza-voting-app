@@ -1,4 +1,10 @@
-import { Artwork, ArtworkType, Prisma, User, Vote } from "@prisma/client";
+import {
+  Artwork,
+  ArtworkType,
+  Prisma,
+  User,
+  Vote,
+} from "../../../lib/generated/prisma";
 
 export interface IAllYears {
   value: string;

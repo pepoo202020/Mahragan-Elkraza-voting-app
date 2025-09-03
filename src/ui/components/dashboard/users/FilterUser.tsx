@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { LanguageType, TranslationKeys } from "@/ui/contexts/LanguageContext";
 import { Search } from "lucide-react";
 import { SharedSelectItem } from "../../shared/SharedSelectItem";
-import { Role } from "@/ui/types/types";
+import { Role } from "../../../../../lib/generated/prisma";
 
 interface IFilterUserProps {
   t: (key: TranslationKeys) => string;

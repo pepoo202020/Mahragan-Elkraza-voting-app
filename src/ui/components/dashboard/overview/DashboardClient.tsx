@@ -1,12 +1,12 @@
 "use client";
 import { useLanguage } from "@/ui/contexts/LanguageContext";
-import { TArtwork, TUser } from "@/ui/types/types";
+import { Artwork, User } from "../../../../../lib/generated/prisma";
 import { DashboardStats } from "./DashboardStats";
 import { TopArtworks } from "./TopArtworks";
 import { TopVotedArtworks } from "./TopVotedArtworks";
 
-interface ArtworkWithLovedBy extends TArtwork {
-  lovedBy: TUser[];
+interface ArtworkWithLovedBy extends Artwork {
+  lovedBy: User[];
 }
 
 interface IDashboardClientProps {
@@ -16,7 +16,7 @@ interface IDashboardClientProps {
     totalVotes: number;
     totalEvents: number;
   };
-  artworks: TArtwork[];
+  artworks: Artwork[];
   years: string[];
   topArtworks: ArtworkWithLovedBy[];
 }

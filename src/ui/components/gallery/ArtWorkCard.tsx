@@ -5,14 +5,14 @@ import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChevronLeft, ChevronRight, Heart, Play } from "lucide-react";
 import Image from "next/image";
 import { Avatar_C } from "../shared/Avatar_C";
-import { TArtwork } from "@/ui/types/types";
+import { Artwork } from "../../../../lib/generated/prisma";
 import { useRef, useState } from "react";
 import { Session } from "next-auth";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { useLanguage } from "@/ui/contexts/LanguageContext";
 
 interface IArtWorkCardProps {
-  artwork: TArtwork;
+  artwork: Artwork;
   onLove: (artworkId: string) => void;
   isLoved?: boolean;
   session: Session | null;
