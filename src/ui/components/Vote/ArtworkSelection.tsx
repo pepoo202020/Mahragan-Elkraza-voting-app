@@ -1,7 +1,6 @@
 "use client";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import getArtworks from "@/actions/getArtworks";
 import { Artwork } from "../../../../lib/generated/prisma";
 import { Badge } from "@/components/ui/badge";
@@ -56,10 +55,9 @@ export default function ArtworkSelection({
         >
           {/* Background Image */}
           <div className="relative h-48 w-full">
-            <Image
+            <img
               src={artwork.images[0]}
               alt={artwork.title}
-              fill
               className="object-cover transition-transform duration-300 group-hover:scale-110"
             />
             {/* Gradient Overlay */}
@@ -126,7 +124,7 @@ export default function ArtworkSelection({
             renderArtworks(individual)
           ) : (
             <div className="text-center py-12 text-gray-500">
-              No individual artworks available
+              {t("noIndividualArtworksAvailable")}
             </div>
           )}
         </TabsContent>
@@ -136,7 +134,7 @@ export default function ArtworkSelection({
             renderArtworks(group)
           ) : (
             <div className="text-center py-12 text-gray-500">
-              No group artworks available
+              {t("noGroupArtworksAvailable")}
             </div>
           )}
         </TabsContent>
@@ -146,7 +144,8 @@ export default function ArtworkSelection({
       {selectedIds.length > 0 && (
         <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-800">
           <p className="text-sm text-blue-800 dark:text-blue-200">
-            <span className="font-semibold">{selectedIds.length}</span> artwork
+            <span className="font-semibold">{selectedIds.length}</span>{" "}
+            {t("artwork")}
             {selectedIds.length !== 1 ? "s" : ""} {t("selected")}
           </p>
         </div>

@@ -32,7 +32,7 @@ export const ArtVoteCard = ({
             <Loader2 className="h-8 w-8 animate-spin text-primary" />
           </div>
         )}
-        <Image
+        <img
           src={art.images[0] || ""}
           alt={art.title}
           width={300}
@@ -40,7 +40,7 @@ export const ArtVoteCard = ({
           className={`w-full h-full object-cover rounded-md transition-opacity duration-300 ${
             imageLoading ? "opacity-0" : "opacity-100"
           }`}
-          onLoadingComplete={() => setImageLoading(false)}
+          onLoad={() => setImageLoading(false)}
         />
       </div>
       <p className="mt-2 text-center">{art.title}</p>
