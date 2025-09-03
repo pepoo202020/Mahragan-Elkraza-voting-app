@@ -120,7 +120,7 @@ export default function ArtworksPage() {
 
   useEffect(() => {
     fetchArtworks();
-  }, [fetchArtworks]);
+  }, []);
 
   // Handle artwork added event
   const handleArtworkAdded = () => {

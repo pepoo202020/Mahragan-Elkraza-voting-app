@@ -144,7 +144,7 @@ export default function UsersPage() {
 
   useEffect(() => {
     fetchUsers();
-  }, [fetchUsers]);
+  }, []);
 
   const filteredUsers = users.filter((user) => {
     const matchesSearch =
