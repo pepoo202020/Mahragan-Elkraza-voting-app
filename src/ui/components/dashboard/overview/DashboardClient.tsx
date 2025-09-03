@@ -4,6 +4,7 @@ import { Artwork, User } from "../../../../../lib/generated/prisma";
 import { DashboardStats } from "./DashboardStats";
 import { TopArtworks } from "./TopArtworks";
 import { TopVotedArtworks } from "./TopVotedArtworks";
+import { IArtworksWithVotes } from "@/ui/types/types";
 
 interface ArtworkWithLovedBy extends Artwork {
   lovedBy: User[];
@@ -16,7 +17,7 @@ interface IDashboardClientProps {
     totalVotes: number;
     totalEvents: number;
   };
-  artworks: Artwork[];
+  artworks: IArtworksWithVotes[];
   years: string[];
   topArtworks: ArtworkWithLovedBy[];
 }

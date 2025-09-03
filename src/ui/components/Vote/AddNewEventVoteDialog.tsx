@@ -47,7 +47,7 @@ export default function AddNewEventVoteDialog({
   const currentYear = new Date().getFullYear();
 
   const form = useForm<CreateEventInput>({
-    resolver: zodResolver(createEventSchema(language)),
+    resolver: zodResolver(createEventSchema()),
     defaultValues: {
       name: "",
       votingStartTime: toDatetimeLocalString(new Date()),

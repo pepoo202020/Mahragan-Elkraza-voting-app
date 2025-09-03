@@ -51,7 +51,7 @@ export default function EditEventModal({
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
   const form = useForm<EditEventInput>({
-    resolver: zodResolver(editEventSchema(language)),
+    resolver: zodResolver(editEventSchema()),
     defaultValues: {
       title: event.title ?? "",
       description: event.description ?? "",
