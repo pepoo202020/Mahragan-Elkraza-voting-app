@@ -30,7 +30,7 @@ export default async function getAllVotingEvents() {
 
     return {
       success: true,
-      eventsInterface,
+      events: eventsInterface, // Changed from 'event' to 'events'
       status: events.length > 0 ? "active" : "inactive",
     };
   } catch (error) {

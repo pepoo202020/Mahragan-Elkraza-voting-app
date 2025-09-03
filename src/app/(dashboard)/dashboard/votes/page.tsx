@@ -78,7 +78,7 @@ export default function VotesPage() {
 
         // Load all events
         const res = await getAllVotingEvents();
-        if (!res.success || !res.eventsInterface) {
+        if (!res.success || !res.events) {
           setAllEvents([]);
           setActiveEventData(null);
           setVotes([]);
@@ -86,7 +86,7 @@ export default function VotesPage() {
         }
 
         // Set all events, with the first one active by default
-        const events = res.eventsInterface.map((event) => ({
+        const events = res.events.map((event) => ({
           ...event,
           active: event.currentEvent,
           startTime: new Date(event.startTime),
