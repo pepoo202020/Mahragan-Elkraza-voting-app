@@ -107,7 +107,7 @@ export default function EditEventModal({
         dir={language === "ar" ? "rtl" : "ltr"}
       >
         <DialogHeader>
-          <DialogTitle>{'t("edit")'}</DialogTitle>
+          <DialogTitle>{t("edit")}</DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form
