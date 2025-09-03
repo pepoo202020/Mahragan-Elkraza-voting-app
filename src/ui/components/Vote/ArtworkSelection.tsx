@@ -58,7 +58,7 @@ export default function ArtworkSelection({
             <img
               src={artwork.images[0]}
               alt={artwork.title}
-              className="object-cover transition-transform duration-300 group-hover:scale-110"
+              className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
             />
             {/* Gradient Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
