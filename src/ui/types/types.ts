@@ -1,7 +1,6 @@
 import {
   Artwork,
   ArtworkType,
-  Prisma,
   User,
   Vote,
 } from "../../../lib/generated/prisma";
@@ -10,31 +9,6 @@ export interface IAllYears {
   value: string;
   label: { en: string; ar: string };
 }
-
-export type TVotingEvent = {
-  title: string;
-  year: number;
-  description: string | null;
-  id: string;
-  createdAt: Date;
-  startTime: Date;
-  endTime: Date;
-};
-
-export type TUser = {
-  name: string;
-  bio: string | null;
-  image: string | null;
-  email: string;
-  role: Role;
-  password: string;
-  id: string;
-  createdAt: Date;
-  updatedAt: Date;
-  deletedAt: Date | null;
-  resetToken: string | null;
-  resetTokenExpiry: Date | null;
-};
 
 export interface UiVoteEvent {
   id: string;
@@ -47,8 +21,6 @@ export interface UiVoteEvent {
   startTime: Date;
   endTime: Date;
 }
-
-export type TArtwork = Prisma.ArtworkGetPayload<{}>;
 
 export type VoteCategory = "INDIVIDUAL" | "GROUP";
 
