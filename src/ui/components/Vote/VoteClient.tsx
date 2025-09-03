@@ -39,19 +39,31 @@ export default function VoteClient() {
     try {
       // Get voting event data
       const result = await getVotingEvent();
+      console.log("Voting event result:", result);
+
       if (!result.success || !result.event) {
+        console.log("No active voting event found");
         toast.error(t("noActiveVotingEvent"));
         setLoading(false);
         return;
       }
 
       const { artworks, id: votingEventId } = result.event;
+      console.log("Event ID:", votingEventId);
+      console.log("Artworks found:", artworks);
+      console.log("Artworks count:", artworks.length);
 
       // Set artwork data
-      setIndividualArts(
-        artworks.filter((a: Artwork) => a.type === "INDIVIDUAL")
+      const individual = artworks.filter(
+        (a: Artwork) => a.type === "INDIVIDUAL"
       );
-      setGroupArts(artworks.filter((a: Artwork) => a.type === "GROUP"));
+      const group = artworks.filter((a: Artwork) => a.type === "GROUP");
+
+      console.log("Individual artworks:", individual.length);
+      console.log("Group artworks:", group.length);
+
+      setIndividualArts(individual);
+      setGroupArts(group);
 
       // Check if user already voted
       const email = session.data?.user?.email;
@@ -74,6 +86,8 @@ export default function VoteClient() {
       setCheckingVotes(false);
     }
   }, [session.data?.user?.email, t]);
+
+  console.log(individualArts);
 
   useEffect(() => {
     fetchEventAndVotes();

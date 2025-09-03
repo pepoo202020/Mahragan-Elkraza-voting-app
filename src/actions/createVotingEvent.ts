@@ -11,18 +11,22 @@ export default async function createVotingEvent(formData: CreateEventInput) {
     year,
     artworkIds,
   } = formData;
+
   // Validate artworkIds
   if (!Array.isArray(artworkIds) || artworkIds.length === 0) {
     throw new Error("Invalid input: artworkIds must be a non-empty array");
   }
 
+  // Convert ISO strings to Date objects (they're already in UTC)
+  const startTime = new Date(votingStartTime);
+  const endTime = new Date(votingEndTime);
+
   const event = await db.votingEvent.create({
     data: {
-      // Adjust field names as per your schema
       title: name,
       description,
-      startTime: new Date(votingStartTime),
-      endTime: new Date(votingEndTime),
+      startTime: startTime,
+      endTime: endTime,
       year: parseInt(year, 10),
       artworks: {
         connect: artworkIds.map((id) => ({ id })),

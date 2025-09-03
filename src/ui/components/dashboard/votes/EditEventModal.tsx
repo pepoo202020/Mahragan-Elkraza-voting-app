@@ -25,6 +25,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import DatePicker from "react-datepicker";
 
 // Returns YYYY-MM-DDTHH:mm for <input type="datetime-local" />
 function toDatetimeLocalString(date: Date) {
@@ -155,11 +156,18 @@ export default function EditEventModal({
                   <FormItem>
                     <FormLabel>{t("votingStartTime")}</FormLabel>
                     <FormControl>
-                      <Input
-                        type="datetime-local"
-                        {...field}
-                        value={field.value}
-                        onChange={field.onChange}
+                      <DatePicker
+                        selected={field.value ? new Date(field.value) : null}
+                        onChange={(date) => {
+                          field.onChange(date ? date.toISOString() : "");
+                        }}
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        timeIntervals={15}
+                        dateFormat="MMMM d, yyyy h:mm aa"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholderText={t("votingStartTime")}
+                        minDate={new Date()}
                       />
                     </FormControl>
                     <FormMessage />
@@ -173,11 +181,18 @@ export default function EditEventModal({
                   <FormItem>
                     <FormLabel>{t("votingEndTime")}</FormLabel>
                     <FormControl>
-                      <Input
-                        type="datetime-local"
-                        {...field}
-                        value={field.value}
-                        onChange={field.onChange}
+                      <DatePicker
+                        selected={field.value ? new Date(field.value) : null}
+                        onChange={(date) => {
+                          field.onChange(date ? date.toISOString() : "");
+                        }}
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        timeIntervals={15}
+                        dateFormat="MMMM d, yyyy h:mm aa"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholderText={t("votingEndTime")}
+                        minDate={new Date()}
                       />
                     </FormControl>
                     <FormMessage />

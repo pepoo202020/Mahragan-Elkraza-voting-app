@@ -25,11 +25,8 @@ import createVotingEvent from "@/actions/createVotingEvent";
 import { TranslationKeys, useLanguage } from "@/ui/contexts/LanguageContext";
 import ArtworkSelection from "./ArtworkSelection";
 import { VotingEvent } from "../../../../lib/generated/prisma";
-
-function toDatetimeLocalString(date: Date) {
-  // Returns YYYY-MM-DDTHH:mm
-  return date.toISOString().slice(0, 16);
-}
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 interface AddNewEventVoteDialogProps {
   onEventCreated?: (event: VotingEvent) => void;
@@ -50,8 +47,8 @@ export default function AddNewEventVoteDialog({
     resolver: zodResolver(createEventSchema()),
     defaultValues: {
       name: "",
-      votingStartTime: toDatetimeLocalString(new Date()),
-      votingEndTime: toDatetimeLocalString(new Date()),
+      votingStartTime: new Date().toISOString(),
+      votingEndTime: new Date().toISOString(),
       description: "",
       year: `${currentYear}`,
       artworkIds: [],
@@ -133,11 +130,18 @@ export default function AddNewEventVoteDialog({
                 <FormItem>
                   <FormLabel>{t("votingStartTime")}</FormLabel>
                   <FormControl>
-                    <Input
-                      type="datetime-local"
-                      {...field}
-                      value={field.value}
-                      onChange={field.onChange}
+                    <DatePicker
+                      selected={field.value ? new Date(field.value) : null}
+                      onChange={(date) => {
+                        field.onChange(date ? date.toISOString() : "");
+                      }}
+                      showTimeSelect
+                      timeFormat="HH:mm"
+                      timeIntervals={15}
+                      dateFormat="MMMM d, yyyy h:mm aa"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholderText={t("votingStartTime")}
+                      minDate={new Date()}
                     />
                   </FormControl>
                   <FormMessage />
@@ -151,11 +155,18 @@ export default function AddNewEventVoteDialog({
                 <FormItem>
                   <FormLabel>{t("votingEndTime")}</FormLabel>
                   <FormControl>
-                    <Input
-                      type="datetime-local"
-                      {...field}
-                      value={field.value}
-                      onChange={field.onChange}
+                    <DatePicker
+                      selected={field.value ? new Date(field.value) : null}
+                      onChange={(date) => {
+                        field.onChange(date ? date.toISOString() : "");
+                      }}
+                      showTimeSelect
+                      timeFormat="HH:mm"
+                      timeIntervals={15}
+                      dateFormat="MMMM d, yyyy h:mm aa"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholderText={t("votingEndTime")}
+                      minDate={new Date()}
                     />
                   </FormControl>
                   <FormMessage />
