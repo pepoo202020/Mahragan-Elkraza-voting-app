@@ -1,7 +1,6 @@
-import { LanguageType } from "@/ui/contexts/LanguageContext";
 import { z } from "zod";
 
-export const createEventSchema = (language: LanguageType) => {
+export const createEventSchema = () => {
   return z.object({
     name: z.string().min(3, "Name is required"),
     votingStartTime: z.string(),

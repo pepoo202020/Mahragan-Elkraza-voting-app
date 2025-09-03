@@ -26,7 +26,6 @@ interface IProfile_CProps {
   router: AppRouterInstance;
   setIsProfileModalOpen: (value: boolean) => void;
   handleSignOut: () => void;
-  dashboard: boolean;
 }
 
 export const Profile_C = ({
@@ -36,7 +35,6 @@ export const Profile_C = ({
   router,
   setIsProfileModalOpen,
   handleSignOut,
-  dashboard,
 }: IProfile_CProps) => {
   return user ? (
     <DropdownMenu dir={language === "ar" ? "rtl" : "ltr"}>

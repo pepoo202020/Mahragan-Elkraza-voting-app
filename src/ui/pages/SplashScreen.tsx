@@ -20,7 +20,7 @@ export const SplashScreen = ({ redirectPageName }: ISplashScreenProp) => {
     }, 3000); // A bit longer to appreciate the beauty
 
     return () => clearTimeout(timer); // Cleanup the timer
-  }, [router]);
+  }, [router, redirectPageName]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-rose-50 to-stone-100 relative overflow-hidden">

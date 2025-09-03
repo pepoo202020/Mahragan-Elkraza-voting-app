@@ -61,7 +61,7 @@ export const ProfileModal = ({
     };
 
     userGet();
-  }, [isOpen]);
+  }, [isOpen, email]);
 
   const onEditProfileSubmit = async (values: EditProfileSchemaType) => {
     if (!editData) return;
@@ -105,7 +105,9 @@ export const ProfileModal = ({
         <div className="space-y-6 py-4">
           {/* Avatar Section */}
           <div className="flex flex-col items-center space-y-4">
-            <Avatar_C image={userData?.image!} name={userData?.name!} />
+            {userData?.image && userData?.name && (
+              <Avatar_C image={userData.image} name={userData.name} />
+            )}
           </div>
           {/* Profile Information */}
           <div className="space-y-4">

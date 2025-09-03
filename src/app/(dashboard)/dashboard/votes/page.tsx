@@ -86,7 +86,7 @@ export default function VotesPage() {
         }
 
         // Set all events, with the first one active by default
-        const events = res.eventsInterface.map((event, index) => ({
+        const events = res.eventsInterface.map((event) => ({
           ...event,
           active: event.currentEvent,
           startTime: new Date(event.startTime),
@@ -115,6 +115,7 @@ export default function VotesPage() {
         }
       } catch (e) {
         toast.error("Failed to load events");
+        console.error(e);
       } finally {
         setLoading(false);
       }
@@ -175,6 +176,7 @@ export default function VotesPage() {
       }
     } catch (e) {
       toast.error("Failed to load event details");
+      console.error(e);
     } finally {
       setLoading(false);
     }

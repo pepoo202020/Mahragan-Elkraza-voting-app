@@ -28,6 +28,7 @@ export async function registerUser(data: RegisterSchemaType) {
     });
     return { success: true };
   } catch (err) {
+    console.error(err);
     return { error: "Registration failed. Please try again." };
   }
 }

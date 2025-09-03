@@ -53,7 +53,7 @@ export const TopVotedArtworks = ({
     });
 
     setFilteredArtworks(filtered);
-  }, [selectedYear, currentYear]);
+  }, [selectedYear, currentYear, artworks]);
   return (
     <Card className="max-h-[480px] overflow-y-auto mb-1">
       <CardHeader>

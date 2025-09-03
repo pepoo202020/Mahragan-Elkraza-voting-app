@@ -89,7 +89,7 @@ export default function ArtsPageClient({
   }, []);
 
   useEffect(() => {
-    let filtered = [...artworks].filter((artwork) => {
+    const filtered = [...artworks].filter((artwork) => {
       const matchesSearch =
         artwork.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         artwork.author.toLowerCase().includes(searchTerm.toLowerCase());
@@ -173,7 +173,7 @@ export default function ArtsPageClient({
               artwork={art}
               onLove={handleLove}
               isLoved={lovedArtworks.has(art.id)}
-              session={session}
+              session={session as any}
             />
           ))}
           {filteredArtworks.length === 0 && (

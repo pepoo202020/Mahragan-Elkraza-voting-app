@@ -36,6 +36,7 @@ export async function addNewUSer(data: {
     });
     return { success: true };
   } catch (err) {
+    console.error(err);
     return { error: "Create failed. Please try again.", success: false };
   }
 }

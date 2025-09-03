@@ -8,10 +8,11 @@ import {
 } from "@/components/ui/card";
 import { TranslationKeys } from "@/ui/contexts/LanguageContext";
 import { Eye } from "lucide-react";
+import { IArtworksWithVotes } from "@/ui/types/types";
 
 interface ITopArtworksProps {
   t: (key: TranslationKeys) => string;
-  artworks: any[];
+  artworks: IArtworksWithVotes[];
 }
 
 export const TopArtworks = ({ t, artworks }: ITopArtworksProps) => {

@@ -1,7 +1,6 @@
-import { LanguageType } from "@/ui/contexts/LanguageContext";
 import z from "zod";
 
-export const editEventSchema = (language: LanguageType) => {
+export const editEventSchema = () => {
   return z.object({
     title: z.string().min(3, "title is required"),
     description: z.string(),

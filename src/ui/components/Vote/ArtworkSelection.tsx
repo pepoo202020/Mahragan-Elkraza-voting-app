@@ -17,8 +17,8 @@ export default function ArtworkSelection({
   setSelectedIds: (ids: string[]) => void;
   t: (key: TranslationKeys) => string;
 }) {
-  const [individual, setIndividual] = useState<any[]>([]);
-  const [group, setGroup] = useState<any[]>([]);
+  const [individual, setIndividual] = useState<Artwork[]>([]);
+  const [group, setGroup] = useState<Artwork[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

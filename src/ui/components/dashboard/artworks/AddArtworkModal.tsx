@@ -19,7 +19,6 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { useLanguage } from "@/ui/contexts/LanguageContext";
 import { Trash2, Upload, X } from "lucide-react";
-import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { toast } from "sonner";
 
@@ -46,7 +45,6 @@ export const AddArtworkModal = ({
     year: currentYear.toString(),
     description: "",
   });
-  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

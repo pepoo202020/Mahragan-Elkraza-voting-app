@@ -33,7 +33,6 @@ export const GalleryHeader = () => {
           {/* Profile & Settings */}
           <div className="flex items-center gap-2">
             <Profile_C
-              dashboard={false}
               user={user}
               language={language}
               t={t}
@@ -52,13 +51,15 @@ export const GalleryHeader = () => {
           </div>
         </div>
       </div>
-      <ProfileModal
-        isOpen={isProfileModalOpen}
-        onClose={() => setIsProfileModalOpen(false)}
-        email={user?.email!}
-        language={language}
-        t={t}
-      />
+      {user?.email && (
+        <ProfileModal
+          isOpen={isProfileModalOpen}
+          onClose={() => setIsProfileModalOpen(false)}
+          email={user.email}
+          language={language}
+          t={t}
+        />
+      )}
     </header>
   );
 };

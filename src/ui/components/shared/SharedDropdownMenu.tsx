@@ -18,7 +18,13 @@ interface IMenuItem {
 interface ISharedDropdownMenuProps {
   menuItems: IMenuItem[];
   triggerIcon?: ReactNode;
-  triggerClassName?: string;
+  triggerClassName?:
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link";
   contentAlign?: "start" | "center" | "end";
   contentClassName?: string;
 }
@@ -33,7 +39,7 @@ export default function SharedDropdownMenu({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant={triggerClassName as any} size="icon">
+        <Button variant={triggerClassName} size="icon">
           {triggerIcon}
         </Button>
       </DropdownMenuTrigger>

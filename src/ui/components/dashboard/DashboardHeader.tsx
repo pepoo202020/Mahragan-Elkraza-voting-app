@@ -54,9 +54,11 @@ export const DashboardHeader = () => {
             <Button variant="ghost" size="icon" className="rounded-full">
               {/* User Image */}
               <Avatar>
-                <AvatarImage src={user?.image!} />
+                <AvatarImage src={user?.image || undefined} />
                 {/* get first character of each name */}
-                <AvatarFallback>{user?.name?.split(" ")[0][0]}</AvatarFallback>
+                <AvatarFallback>
+                  {user?.name?.split(" ")[0]?.[0] || "U"}
+                </AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
